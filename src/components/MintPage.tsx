@@ -69,7 +69,7 @@ export default function MintPage() {
 
             {/* Modal de confirmation après le mint */}
             <Dialog.Root open={isModalOpen} onOpenChange={setIsModalOpen}>
-                <Dialog.Trigger asChild>
+                <Dialog.Trigger>
                     {/* Utilisation d'un trigger uniquement pour la structure, sans bouton caché */}
                     <span />
                 </Dialog.Trigger>
@@ -83,7 +83,7 @@ export default function MintPage() {
                         <img src="/nft-preview.png" alt="NFT Minted" width="200" height="200" />
                     </Flex>
                     <Flex justify="end" mt="4">
-                        <Dialog.Close asChild>
+                        <Dialog.Close>
                             <Button variant="soft" onClick={() => setIsModalOpen(false)}>
                                 Fermer
                             </Button>
