@@ -1,19 +1,14 @@
-import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
-import { isValidSuiObjectId } from "@mysten/sui/utils";
+import { useCurrentAccount } from "@mysten/dapp-kit";
 import { Box, Container, Flex, Heading } from "@radix-ui/themes";
-import { useState } from "react";
-import { Counter } from "./Counter";
-import { CreateCounter } from "./CreateCounter";
+import MintPage from "./components/MintPage";
+import Navbar from "./components/Navbar";
 
 function App() {
   const currentAccount = useCurrentAccount();
-  const [counterId, setCounter] = useState(() => {
-    const hash = window.location.hash.slice(1);
-    return isValidSuiObjectId(hash) ? hash : null;
-  });
 
   return (
-    <>
+    <div className="bg-custom">
+      <Navbar />
       <Flex
         position="sticky"
         px="4"
@@ -24,11 +19,7 @@ function App() {
         }}
       >
         <Box>
-          <Heading>dApp Starter Template</Heading>
-        </Box>
-
-        <Box>
-          <ConnectButton />
+          <Heading>Mint dApp</Heading>
         </Box>
       </Flex>
       <Container>
@@ -36,25 +27,16 @@ function App() {
           mt="5"
           pt="2"
           px="4"
-          style={{ background: "var(--gray-a2)", minHeight: 500 }}
+          style={{ background: "var(--gray-a2)", minHeight: 500, minWidth: 800 }}
         >
           {currentAccount ? (
-            counterId ? (
-              <Counter id={counterId} />
-            ) : (
-              <CreateCounter
-                onCreated={(id) => {
-                  window.location.hash = id;
-                  setCounter(id);
-                }}
-              />
-            )
+            <MintPage />
           ) : (
             <Heading>Please connect your wallet</Heading>
           )}
         </Container>
       </Container>
-    </>
+    </div>
   );
 }
 

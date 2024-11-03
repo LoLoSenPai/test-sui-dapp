@@ -9,13 +9,13 @@ import { createNetworkConfig } from "@mysten/dapp-kit";
 const { networkConfig, useNetworkVariable, useNetworkVariables } =
   createNetworkConfig({
     devnet: {
-      url: getFullnodeUrl("devnet"),
+      url: "https://sui-devnet-endpoint.blockvision.org/",
       variables: {
         counterPackageId: DEVNET_COUNTER_PACKAGE_ID,
       },
     },
     testnet: {
-      url: getFullnodeUrl("testnet"),
+      url: "https://sui-testnet-endpoint.blockvision.org/",
       variables: {
         counterPackageId: TESTNET_COUNTER_PACKAGE_ID,
       },
